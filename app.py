@@ -5,10 +5,10 @@ import torch
 
 app = FastAPI()
 
-# Carregar o modelo e o tokenizer da Hugging Face
+# Carregar o modelo e o tokenizer da Hugging Face com confiança no código remoto
 model_name = "openbmb/MiniCPM-Llama3-V-2_5"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True)
 
 class Query(BaseModel):
     text: str
